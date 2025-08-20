@@ -4,17 +4,14 @@ configDotenv();
 export const transporter = nodemailer.createTransport({
   host: 'smtp.sendgrid.net',
   port: 2525,
-  // tls: {
-  //   ciphers: 'SSLv3',
-  // },
+  tls: {
+    rejectUnauthorized: false,
+  },
   secure: false,
   auth: {
     user: "apikey",
     pass: process.env.SENDGRID_API_KEY, // Use the SendGrid API key from .env
   },
-  tls: {
-    rejectUnauthorized: false, // This is important for self-signed certificates
-  }
   
 });
 
